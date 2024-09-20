@@ -15,14 +15,14 @@ app.use(cors({ origin: '*' }));
 
 const port = process.env.PORT || 3000;
 
-const SPREADSHEET_ID = process.env.SPREADSHEET_ID; // Add Spreadsheet ID in .env file
-// const SERVICE_ACCOUNT_KEY_FILE = process.env.GOOGLE_SERVICE_ACCOUNT_KEY_FILE; // Path to service account key
-const serviceAccountKey = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY);
+const SPREADSHEET_ID = '1oekZxUe3XZJnhxyiZsjy9kX7bJq-_35CBnFZHR0cet4'; // Add Spreadsheet ID in .env file
+const SERVICE_ACCOUNT_KEY_FILE = './credentials.json'; // Path to service account key
+// const serviceAccountKey = JSON.parse(serviceJSON);
 // Set up the Google Sheets API client
 async function getGoogleSheetsClient() {
     const auth = new google.auth.GoogleAuth({
-        // keyFile: SERVICE_ACCOUNT_KEY_FILE, 
-        credentials: serviceAccountKey,
+        keyFile: SERVICE_ACCOUNT_KEY_FILE, 
+        // credentials: serviceJSON,
         scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'], // Read-only access
     });
 
